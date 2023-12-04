@@ -5,7 +5,7 @@ class JsonValidator < ActiveModel::EachValidator
     options.reverse_merge!(message: :invalid_json)
     options.reverse_merge!(schema: nil)
     options.reverse_merge!(options: {})
-    options.reverse_merge!(value: ->(_record, _attribute, value) { value })
+    options.reverse_merge!(value: ->(_record, _attribute, value) { value.as_json })
     @attributes = options[:attributes]
 
     super
